@@ -12,7 +12,7 @@ class 立法會 {
 
     async function 大會表決(動議) {
         var 結果 = await 進行表決(); // aka 撳掣，亦可能係非點名表決
-        if (動議.議題 is 法案 && 動議.議題.負責人 is 議員) {
+        if (動議.議題 is 法案 && 動議.議題.負責人 is 議員 || 動議.議題 is 修訂 && 動議.動議人 is 議員) {
             let 地區直選通過 = 
                 結果.贊成.filter((m) => m.地區直選).length > 
                 Math.floor(結果.出席.filter((m) => m.地區直選).length / 2);
